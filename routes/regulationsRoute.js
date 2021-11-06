@@ -21,10 +21,13 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
 
     if(challengeCode != null){
       res.status(200).json({
+        status: "OK",
         challengeResponse: challengeResponse
       });
     } else {
-      res.status(200);
+      res.status(200).json({
+        status: "OK"
+      });
     }
 
   } catch (error) {
@@ -35,9 +38,10 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
 // SEND TEST NOTIFICATION FROM EBAY FOR ACCOUNT DELETION
 router.post('/api/v1/accountDeletion', async (req, res) => {
   try {
-    console.log(req.body)
-    if(req.body != null && req.body.metadata.topic === 'MARKETPLACE_ACCOUNT_DELETION') {
-      res.status(200);
+    if(req.body.metadata.topic === 'MARKETPLACE_ACCOUNT_DELETION') {
+      res.status(200).json({
+        status: "OK"
+      });
     } else {
       res.status(500).json({
         status: "Not sure what happened."
