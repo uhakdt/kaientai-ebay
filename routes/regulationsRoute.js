@@ -20,7 +20,7 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
     const challengeResponse = new Buffer.from(responseHash).toString();
 
     res.status(200).json({
-      challengeRsponse: challengeResponse
+      challengeResponse: challengeResponse
     })
   } catch (error) {
     console.log(error);
