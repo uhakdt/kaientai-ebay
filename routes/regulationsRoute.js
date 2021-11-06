@@ -35,6 +35,8 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
 // SEND TEST NOTIFICATION FROM EBAY FOR ACCOUNT DELETION
 router.post('/api/v1/accountDeletion', async (req, res) => {
   try {
+    console.log(req)
+    console.log(req.body)
     const challengeCode = req.query.challenge_code;
     const verificationToken = "FFEdv6JHpk1KEuNZma8Tr2910606jYtB";
     const endpoint = "https://kaientai-ebay.herokuapp.com/api/v1/accountDeletion";
