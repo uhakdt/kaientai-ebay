@@ -11,5 +11,6 @@ app.use(morgan('dev'));
 
 // Routes
 app.use(require('./routes/incomingOrderRoute.js'));
+app.use(require('./routes/regulationsRoute.js'));
 
 module.exports = app;
