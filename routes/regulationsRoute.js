@@ -35,27 +35,13 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
 // SEND TEST NOTIFICATION FROM EBAY FOR ACCOUNT DELETION
 router.post('/api/v1/accountDeletion', async (req, res) => {
   try {
-    console.log(req)
-    console.log(req.body)
-    const challengeCode = req.query.challenge_code;
-    const verificationToken = "FFEdv6JHpk1KEuNZma8Tr2910606jYtB";
-    const endpoint = "https://kaientai-ebay.herokuapp.com/api/v1/accountDeletion";
-
-    const hash = crypto.createHash('sha256');
-    hash.update(challengeCode);
-    hash.update(verificationToken);
-    hash.update(endpoint);
-    const responseHash = hash.digest('hex');
-    const challengeResponse = new Buffer.from(responseHash).toString();
-
-    if(challengeCode != null){
-      res.status(200).json({
-        challengeResponse: challengeResponse
-      });
-    } else {
+    if(req.body != null && req.body.topic === 'MARKETPLACE_ACCOUNT_DELETION') {
       res.status(200);
+    } else {
+      res.status(500).json({
+        status: "Not sure what happened."
+      })
     }
-
   } catch (error) {
     console.log(error);
   }
