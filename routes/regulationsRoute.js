@@ -35,7 +35,8 @@ router.get('/api/v1/accountDeletion', async (req, res) => {
 // SEND TEST NOTIFICATION FROM EBAY FOR ACCOUNT DELETION
 router.post('/api/v1/accountDeletion', async (req, res) => {
   try {
-    if(req.body != null && req.body.topic === 'MARKETPLACE_ACCOUNT_DELETION') {
+    console.log(req.body)
+    if(req.body != null && req.body.metadata.topic === 'MARKETPLACE_ACCOUNT_DELETION') {
       res.status(200);
     } else {
       res.status(500).json({
